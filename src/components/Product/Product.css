@@ -1,0 +1,13 @@
+.Product {
+    margin: 15px;
+    color: white;
+}
+
+.Product .wrapper {
+    border-radius: 5px;
+    background: #e683c3;
+    padding: 15px;
+    box-shadow: 5px 9px 15px -15px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 5px 9px 15px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 9px 15px -15px rgba(0, 0, 0, 0.75);
+}
