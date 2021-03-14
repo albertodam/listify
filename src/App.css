@@ -1,8 +1,8 @@
 .App {
- display: flex;
- flex-direction: column;
- align-items: center;
- width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .App .list-product {
@@ -14,6 +14,7 @@
 .App .form-new-product {
   display: flex;
   flex-direction: column;
+  padding: 12px 0;
 }
 
 .App .form-new-product button {
