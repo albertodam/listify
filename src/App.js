@@ -1,42 +1,41 @@
-import './App.css';
-import { useState } from 'react'
-import Product from './components/Product/Product'
-import  {saveList, getList}  from './services/local.storage.service';
+import React, { useState } from 'react'
+import './App.css'
+
+import ProductContext from './context/ProductContext'
+import ProductList from './components/ProductList/index'
+import ProductForm from './components/ProductForm'
+import { saveList, getList } from './services/local.storage.service'
 import Logo from './components/Logo/Logo'
+
 function App() {
+  console.log('renderizado de app')
 
-  const [products, updateProducts] = useState(getList);
-  const [newProduct, updateNewProduct] = useState();
+  const [products, updateProducts] = useState(getList)
+  const getId = () => {
+    return `_${Math.random().toString(36).substr(2, 9)}`
+  }
 
-  const handlerAddProduct = (e) => {
-    e.preventDefault();
-    const newProductsAdded = [...products, { id:getId(), name: newProduct }];
+  const handlerAddProduct = (newProduct) => () => {
+    const newProductsAdded = [...products, { id: getId(), name: newProduct }]
     updateProducts(newProductsAdded)
-    document.querySelector('#product-form').reset();
-    updateNewProduct('')
     saveList(newProductsAdded)
   }
 
-  const handlerNameProductChange = (e) => {
-    updateNewProduct(e.target.value)
+  const handlerRemoverProduct = (productId) => () => {
+    const productListUpdated = products.filter((product) => product.id !== productId)
+    updateProducts(productListUpdated)
+    saveList(productListUpdated)
   }
-
-  const getId = function () {
-    return '_' + Math.random().toString(36).substr(2, 9);
-  };
 
   return (
     <div className="App">
-    <Logo />
-      <form id="product-form" className="form-new-product" onSubmit={handlerAddProduct}>
-        <input onChange={handlerNameProductChange} />
-        <button disabled={!newProduct}>+ Añadir producto</button>
-      </form>
-      <div className="list-product">
-      {products.map(product => <Product key={product.id} name={product.name} />)}
-      </div>
+      <Logo />
+      <ProductContext.Provider value={{ products, handlerAddProduct, handlerRemoverProduct }}>
+        <ProductForm />
+        <ProductList />
+      </ProductContext.Provider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,34 @@
+.ActionButtons {
+  display: flex;
+}
+
+.ActionButtons button:hover {
+  cursor: pointer;
+}
+.ActionButtons button {
+  display: flex;
+  background: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+button.ActionButtonItem + button.ActionButtonItem {
+  margin-left: 10px;
+}
+
+button.ActionButtonItem svg {
+  fill: #e683c3;
+}
+
+button.ActionButtonItem.trash {
+  border: 3px solid white;
+}
+
+button.ActionButtonItem.trash svg {
+  background: #e683c3;
+  fill: white;
+  border-radius: 50%;
+}

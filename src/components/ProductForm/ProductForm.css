@@ -1,0 +1,9 @@
+.ProductForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductForm input {
+  height: 30px;
+  border-radius: 5px;
+}
