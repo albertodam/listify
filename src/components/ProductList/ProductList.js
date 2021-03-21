@@ -3,8 +3,6 @@ import Product from '../Product/Product'
 import ProductContext from '../../context/ProductContext'
 
 const ProductList = () => {
-  console.log('dentro - ProductList')
-
   return (
     <ProductContext.Consumer>
       {({ products }) => (

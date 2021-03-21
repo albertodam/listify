@@ -8,8 +8,6 @@ import { saveList, getList } from './services/local.storage.service'
 import Logo from './components/Logo/Logo'
 
 function App() {
-  console.log('renderizado de app')
-
   const [products, updateProducts] = useState(getList)
   const getId = () => {
     return `_${Math.random().toString(36).substr(2, 9)}`
