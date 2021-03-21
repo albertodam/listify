@@ -3,10 +3,10 @@ import PropType from 'prop-types'
 import './Product.css'
 import ActionButtons from '../ActionButtons/ActionsButtons'
 
-const Product = ({ name, id }) => {
+const Product = ({ name, id, completed }) => {
   return (
     <div className="Product">
-      <div className="wrapper">{name}</div>
+      <div className={`wrapper ${completed ? 'complete' : ''}`}>{name}</div>
       <div className="action-buttons-container">
         <ActionButtons productId={id} />
       </div>
@@ -16,6 +16,7 @@ const Product = ({ name, id }) => {
 
 Product.propTypes = {
   id: PropType.string.isRequired,
+  completed: PropType.bool.isRequired,
   name: PropType.string.isRequired,
 }
 

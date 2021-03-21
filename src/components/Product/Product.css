@@ -12,3 +12,7 @@
   -webkit-box-shadow: 5px 9px 15px -15px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 5px 9px 15px -15px rgba(0, 0, 0, 0.75);
 }
+
+.Product .wrapper.complete {
+  text-decoration: line-through;
+}

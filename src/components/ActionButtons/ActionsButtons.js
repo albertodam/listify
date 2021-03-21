@@ -6,9 +6,9 @@ import ProductContext from '../../context/ProductContext'
 const ActionButtons = ({ productId }) => {
   return (
     <ProductContext.Consumer>
-      {({ handlerRemoverProduct }) => (
+      {({ handlerRemoverProduct, handlerCheckProduct }) => (
         <div className="ActionButtons">
-          <button type="button" className="ActionButtonItem" onClick={handlerRemoverProduct(productId)}>
+          <button type="button" className="ActionButtonItem" onClick={handlerCheckProduct(productId)}>
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"

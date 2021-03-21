@@ -8,7 +8,7 @@ const ProductList = () => {
       {({ products }) => (
         <div className="list-product">
           {products.map((product) => (
-            <Product key={product.id} id={product.id} name={product.name} />
+            <Product key={product.id} id={product.id} completed={product.completed} name={product.name} />
           ))}
         </div>
       )}

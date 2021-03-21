@@ -14,13 +14,31 @@ function App() {
   }
 
   const handlerAddProduct = (newProduct) => () => {
-    const newProductsAdded = [...products, { id: getId(), name: newProduct }]
+    const newProductsAdded = [...products, { id: getId(), name: newProduct, completed: false }].sort(
+      (prodcut1, product2) => prodcut1.completed - product2.completed
+    )
     updateProducts(newProductsAdded)
     saveList(newProductsAdded)
   }
 
   const handlerRemoverProduct = (productId) => () => {
-    const productListUpdated = products.filter((product) => product.id !== productId)
+    const productListUpdated = products
+      .filter((product) => product.id !== productId)
+      .sort((prodcut1, product2) => prodcut1.completed - product2.completed)
+    updateProducts(productListUpdated)
+    saveList(productListUpdated)
+  }
+
+  const handlerCheckProduct = (productId) => () => {
+    const productListUpdated = products
+      .map((product) => {
+        const productModified = product
+        if (productModified.id === productId) {
+          productModified.completed = true
+        }
+        return productModified
+      })
+      .sort((prodcut1, product2) => prodcut1.completed - product2.completed)
     updateProducts(productListUpdated)
     saveList(productListUpdated)
   }
@@ -28,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <Logo />
-      <ProductContext.Provider value={{ products, handlerAddProduct, handlerRemoverProduct }}>
+      <ProductContext.Provider value={{ products, handlerAddProduct, handlerRemoverProduct, handlerCheckProduct }}>
         <ProductForm />
         <ProductList />
       </ProductContext.Provider>
